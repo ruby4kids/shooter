@@ -24,19 +24,11 @@ class Player
   end
 
   def move_left
-    if @x < 0
-      @x = 0
-    else
-      @x = @x - 20
-    end
+    @x -= 10 if @x > 0
   end
 
   def move_right
-    if @x > @game_window.width
-      @x = @game_window.width - @icon.width
-    else
-      @x = @x + 20
-    end
+    @x += 10 if @x < @game_window.width - @icon.width
   end
 
   def draw
