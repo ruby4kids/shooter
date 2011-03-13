@@ -4,7 +4,7 @@ class Player
   def initialize(game_window)
     @game_window = game_window
     @icon = Gosu::Image.new(game_window, "media/player.png", false)
-    @x = 80
+    @x = 300
     @y = 450
     @gun = Gun.new(self)
   end

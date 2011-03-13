@@ -31,7 +31,7 @@ class Gun
   end
   
   def draw
-    @font.draw("Bullets: #{bullets_left}", 550,500,4)
+    @font.draw("Bullets: #{bullets_left}", 50,500,4)
     @bullets.each {|bullet| bullet.draw}
   end
 end
