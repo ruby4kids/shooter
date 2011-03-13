@@ -5,7 +5,7 @@ class Target
   def initialize(game_window, x, y)
     @game_window = game_window
     @player = game_window.player
-    @icon = Gosu::Image.new(game_window, "media/duck.png", false)
+    @icon = Gosu::Image.new(game_window, "media/target.png", false)
     @icon_explosion = Gosu::Image.new(game_window, "media/explosion.png", false)
     @x = x
     @y = y

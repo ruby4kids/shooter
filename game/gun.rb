@@ -4,7 +4,7 @@ class Gun
   def initialize(player)
     @player = player
     @game_window = player.game_window
-    @bullets = 100.times.map {Bullet.new(self)}
+    @bullets = 10.times.map {Bullet.new(self)}
     @font = Gosu::Font.new(@game_window, 'System', 24)
   end
   
