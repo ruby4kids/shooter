@@ -4,15 +4,13 @@ class Gun
   def initialize(player)
     @player = player
     @game_window = player.game_window
-    @max_bullets = 100
-    @bullet_count = 0
-    @bullets = []
+    @bullets = 100.times.map {Bullet.new(self)}
+    @font = Gosu::Font.new(@game_window, 'System', 24)
   end
   
-  def shoot
-    @bullet_count += 1
-    if @bullet_count < @max_bullets
-      @bullets << Bullet.new(self)
+  def button_down(id)
+    if id == Gosu::Button::KbSpace
+      shoot
     end
   end
   
@@ -20,7 +18,20 @@ class Gun
     @bullets.each {|bullet| bullet.update}
   end
   
+  def shoot
+    next_bullet.shoot if next_bullet
+  end 
+  
+  def next_bullet
+    @bullets.find {|bullet| bullet.available?}
+  end
+  
+  def bullets_left
+    @bullets.select {|bullet| bullet.available?}.size
+  end
+  
   def draw
+    @font.draw("Bullets: #{bullets_left}", 550,500,4)
     @bullets.each {|bullet| bullet.draw}
   end
 end

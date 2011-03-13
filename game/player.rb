@@ -8,26 +8,22 @@ class Player
     @y = 450
     @gun = Gun.new(self)
   end
-
+  
   def button_down(id)
-    if id == Gosu::Button::KbSpace
-      @gun.shoot
-    end
+    @gun.button_down(id)
   end
-
+  
   def update
     if @game_window.button_down? Gosu::Button::KbLeft
-      turn_left
+      move_left
     end
-
     if @game_window.button_down? Gosu::Button::KbRight
-      turn_right
+      move_right
     end
-
     @gun.update
   end
 
-  def turn_left
+  def move_left
     if @x < 0
       @x = 0
     else
@@ -35,7 +31,7 @@ class Player
     end
   end
 
-  def turn_right
+  def move_right
     if @x > @game_window.width
       @x = @game_window.width - @icon.width
     else

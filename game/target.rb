@@ -1,6 +1,6 @@
 class Target
   
-  attr_reader :x, :y, :game_window, :alive
+  attr_reader :x, :y, :game_window, :alive, :icon
   
   def initialize(game_window, x, y)
     @game_window = game_window
@@ -17,7 +17,7 @@ class Target
       if @x > @game_window.width
         @x = 0
       else
-        @x = @x + 20
+        @x = @x + 10
       end
     end
   end
@@ -29,13 +29,21 @@ class Target
   end
   
   def alive?
-    @alive = true
+    @alive == true
   end
   
   def draw
     if @alive
       @icon.draw(@x, @y, 2)
     end
+  end
+  
+  def center_x
+    (@x + @icon.width)/2.0
+  end
+  
+  def center_y
+    (@y + @icon.height)/2.0
   end
   
 end

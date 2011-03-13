@@ -5,17 +5,39 @@ class Bullet
     @gun = gun
     @game_window = gun.game_window
     @player = gun.player
-    @x = @player.x
-    @y = @player.y
+    @x = -100
+    @y = -100
     @icon = Gosu::Image.new(@game_window, "media/bullet.png", false)
+    @shot = false
   end
   
   def update
-    @y = @y - 10
+    if @shot == true
+      @y = @y - 20
+    end
+  end
+  
+  def shoot
+    @x = @player.x
+    @y = @player.y
+    @shot = true
+  end
+  
+  def available?
+    @shot == false
   end
   
   def hit_target?(target)
-    Gosu::distance(@x, @y, target.x, target.y) < 20
+    hit = Gosu::distance(center_x, center_y, target.center_x, target.center_y) < 20
+    hit
+  end
+  
+  def center_x
+    (@x + @icon.width)/2.0
+  end
+  
+  def center_y
+    (@y + @icon.height)/2.0
   end
   
   def draw
