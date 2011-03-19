@@ -11,12 +11,20 @@ class Target
     @y = y
     @alive = true
     @boom = Gosu::Song.new(game_window, "media/explosion.wav")
+    @bombs = 5.times.map {Bomb.new(self)}
+    @start_time = Time.now
+  
   end
   
   def update
     check_if_hit
     if alive? and @x > @game_window.width
+      @bombs.each {|bomb| bomb.update}
       @x = 0
+      if (Time.now - @start_time) % 5
+      unused_bomb = @bombs.find {|bomb| bomb.unused?} 
+      unused_bomb.drop if unused_bomb 
+      end
     else
       @x = @x + 10
     end
@@ -36,6 +44,7 @@ class Target
   def draw
     if @alive
       @icon.draw(@x, @y, 2)
+      @bombs.each {|bomb| bomb.draw}
     else
       @icon_explosion.draw(@x, @y, 2)
     end
