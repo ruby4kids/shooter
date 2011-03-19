@@ -12,6 +12,7 @@ class My_game < Gosu::Window
   
   def button_down(id)
     @player.button_down(id)
+    @targets.each {|target| target.button_down(id)}
   end
   
   def targets_left

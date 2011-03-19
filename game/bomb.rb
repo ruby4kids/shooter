@@ -10,7 +10,7 @@ class Bomb
   
   def update
    if dropped?
-     @y = @y - 20
+     @y = @y + 20
    end
   end
   
@@ -23,9 +23,11 @@ class Bomb
   end
   
   def drop
-    @dropped = true
-    @x = @target.x
-    @y = @target.y
+    if @dropped == false
+      @dropped = true
+      @x = @target.x
+      @y = @target.y
+    end
   end
   
   def draw
