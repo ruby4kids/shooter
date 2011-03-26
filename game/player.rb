@@ -17,6 +17,10 @@ class Player
     (@x + @icon.width)/2.0
   end
   
+  def alive?
+    @alive == true
+  end
+  
   def check_if_hit
      if (@alive and @bombs.any? {|bomb| bomb.hit_player?(self)})
        @alive = false 

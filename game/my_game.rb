@@ -21,8 +21,10 @@ class My_game < Gosu::Window
   end
   
   def update
-    @player.update
-    @targets.each {|target| target.update}
+    if @player.alive?
+      @player.update
+      @targets.each {|target| target.update}
+    end
   end
 
   def draw
