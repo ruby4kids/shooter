@@ -12,8 +12,10 @@ class My_game < Gosu::Window
   end
   
   def button_down(id)
-    @player.button_down(id)
-    @targets.each {|target| target.button_down(id)}
+    if @player.alive?
+      @player.button_down(id)
+      @targets.each {|target| target.button_down(id)}
+    end
   end
   
   def targets_left

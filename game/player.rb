@@ -8,6 +8,7 @@ class Player
     @boom = Gosu::Song.new(game_window, "media/explosion.wav")
     @game_window = game_window
     @icon = Gosu::Image.new(game_window, "media/player.png", false)
+    @icon_explosion = Gosu::Image.new(game_window, "media/player_explosion.png", false)
     @x = 300    
     @y = 450
     @gun = Gun.new(self)
@@ -56,7 +57,11 @@ class Player
   end
 
   def draw
-    @icon.draw(@x, @y, 3)
+    if alive?
+      @icon.draw(@x, @y, 3)
+    else
+      @icon_explosion.draw(@x, @y, 3)
+    end
     @gun.draw
   end
 
