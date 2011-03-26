@@ -8,6 +8,10 @@ class Bomb
     @game_window = target.game_window
   end
   
+  def reset
+    @dropped = false
+  end
+  
   def hit_player?(player)
     hit = Gosu::distance(center_x, center_y, player.center_x, player.center_y) < 20
     hit

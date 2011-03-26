@@ -16,6 +16,12 @@ class Target
   
   end
   
+  def reset
+    @alive = true
+    @bombs.each {|bomb| bomb.reset}
+  end
+  
+  
   def update
     check_if_hit
     if alive? and @x > @game_window.width
