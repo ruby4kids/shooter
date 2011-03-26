@@ -1,13 +1,14 @@
 class Player
   attr_reader :x, :y, :game_window, :gun
-
+  attr_accessor :bombs
+  
   def initialize(game_window)
     @bombs = game_window.bombs
     @alive = true
     @boom = Gosu::Song.new(game_window, "media/explosion.wav")
     @game_window = game_window
     @icon = Gosu::Image.new(game_window, "media/player.png", false)
-    @x = 300
+    @x = 300    
     @y = 450
     @gun = Gun.new(self)
   end

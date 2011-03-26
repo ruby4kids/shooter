@@ -4,10 +4,11 @@ class My_game < Gosu::Window
   
   def initialize(window_width, window_height)
     super(window_width,window_height,0)
+    @player = Player.new(self)
     @background_image = background_image "media/pario_background.png"
     @targets = 5.times.map {|i| Target.new(self, i * 150, i * 20)}
     @font = Gosu::Font.new(self, 'System', 24)
-    @player = Player.new(self)
+    @player.bombs = @targets.map {|target| target.bombs}.flatten
   end
   
   def button_down(id)
