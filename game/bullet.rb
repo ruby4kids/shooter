@@ -13,6 +13,8 @@ class Bullet
   
   def reset
     @shot = false
+    @x = -100
+    @y = -100
   end
   
   def update

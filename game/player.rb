@@ -17,6 +17,8 @@ class Player
   def reset
     @alive = true
     @gun.reset
+    @x = 300
+    @y = 450
   end
   
   def center_x

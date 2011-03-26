@@ -10,6 +10,8 @@ class Bomb
   
   def reset
     @dropped = false
+    @x = -1
+    @y = -1
   end
   
   def hit_player?(player)
