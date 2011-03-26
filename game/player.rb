@@ -14,6 +14,11 @@ class Player
     @gun = Gun.new(self)
   end
   
+  def reset
+    @alive = true
+    @gun.reset
+  end
+  
   def center_x
     (@x + @icon.width)/2.0
   end

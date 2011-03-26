@@ -14,6 +14,10 @@ class Gun
     end
   end
   
+  def reset
+    @bullets.each {|bullet| bullet.reset}
+  end
+  
   def update
     @bullets.each {|bullet| bullet.update}
   end

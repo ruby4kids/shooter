@@ -11,6 +11,10 @@ class Bullet
     @shot = false
   end
   
+  def reset
+    @shot = false
+  end
+  
   def update
     if @shot == true
       @y = @y - 20

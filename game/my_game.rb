@@ -15,7 +15,14 @@ class My_game < Gosu::Window
     if @player.alive?
       @player.button_down(id)
       @targets.each {|target| target.button_down(id)}
+    elsif id == Gosu::Button::KbEscape
+      reset_game
     end
+  end
+  
+  def reset_game
+    @player.reset
+    @targets.each {|target| target.reset}
   end
   
   def targets_left
