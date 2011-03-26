@@ -1,6 +1,6 @@
 class Target
   
-  attr_reader :x, :y, :game_window, :alive, :icon
+  attr_reader :x, :y, :game_window, :alive, :icon, :bombs
   
   def initialize(game_window, x, y)
     @game_window = game_window
@@ -20,7 +20,6 @@ class Target
     check_if_hit
     if alive? and @x > @game_window.width
       @x = 0
-
     else
       @x = @x + 10
     end

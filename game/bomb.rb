@@ -8,9 +8,22 @@ class Bomb
     @game_window = target.game_window
   end
   
+  def hit_player?(player)
+    hit = Gosu::distance(center_x, center_y, player.center_x, player.center_y) < 20
+    hit
+  end
+  
+  def center_x
+    (@x + @icon.width)/2.0
+  end
+  
+  def center_y
+    (@y + @icon.height)/2.0
+  end
+  
   def update
    if dropped?
-     @y = @y + 20
+     @y = @y + 5
    end
   end
   

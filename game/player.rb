@@ -2,6 +2,9 @@ class Player
   attr_reader :x, :y, :game_window, :gun
 
   def initialize(game_window)
+    @bombs = game_window.bombs
+    @alive = true
+    @boom = Gosu::Song.new(game_window, "media/explosion.wav")
     @game_window = game_window
     @icon = Gosu::Image.new(game_window, "media/player.png", false)
     @x = 300
@@ -9,11 +12,27 @@ class Player
     @gun = Gun.new(self)
   end
   
+  def center_x
+    (@x + @icon.width)/2.0
+  end
+  
+  def check_if_hit
+     if (@alive and @bombs.any? {|bomb| bomb.hit_player?(self)})
+       @alive = false 
+       @boom.play
+     end
+   end
+  
+  def center_y
+    (@y + @icon.height)/2.0
+  end
+  
   def button_down(id)
     @gun.button_down(id)
   end
   
   def update
+    check_if_hit
     if @game_window.button_down? Gosu::Button::KbLeft
       move_left
     end
